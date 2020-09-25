@@ -62,5 +62,10 @@ public class Pessoa implements Cloneable {
 	public String toString() {
 		return getId() + " - " + getNome() + ": " + getTelefone();
 	}
+	public void clonar(Pessoa p) {
+		this.setId(p.getId());
+		this.setNome(p.getNome());
+		this.setTelefone(p.getTelefone());
+	}
 	
 }

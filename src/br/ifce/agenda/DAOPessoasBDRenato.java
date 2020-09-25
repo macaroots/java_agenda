@@ -68,7 +68,7 @@ public class DAOPessoasBDRenato implements DAOPessoas {
 	@Override
 	public List<Pessoa> listar() {
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
-		String sql = "SELECT * FROM contatos";
+		String sql = "SELECT * FROM contatos2";
 		try {
 			Connection conexao = conecta();
 			PreparedStatement consulta = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

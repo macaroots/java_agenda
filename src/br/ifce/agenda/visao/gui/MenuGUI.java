@@ -1,7 +1,6 @@
 package br.ifce.agenda.visao.gui;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -14,10 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
+import br.ifce.agenda.DAOPessoasAgent;
 import br.ifce.agenda.Pessoa;
 import br.ifce.agenda.controlador.Agenda;
 import br.ifce.mvc.Visao;
@@ -43,6 +41,7 @@ public class MenuGUI extends Visao<Agenda> {
 		txPhone.setName("matricula");
 		JButton button1 = new JButton("Insert");
 		JButton button2 = new JButton("List");
+		JButton button3 = new JButton("Editando: false");
 
 		JTable table = new JTable();
 		JScrollPane scroll = new JScrollPane(table);
@@ -66,10 +65,19 @@ public class MenuGUI extends Visao<Agenda> {
 		pForm.add(txPhone);
 		pForm.add(button1);
 		pForm.add(button2);
+		System.out.println("controlador: " + controlador.crud);
+		if (controlador.crud instanceof DAOPessoasAgent) {
+			pForm.add(button3);
+			System.out.println("sim");
+		}
+		else {
+			System.out.println("não");
+		}
 		frame.add(scroll, BorderLayout.CENTER);
 
 		frame.setVisible(true);
-		frame.setSize(760, 512);
+		//frame.setSize(760, 512);
+		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -88,6 +96,13 @@ public class MenuGUI extends Visao<Agenda> {
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlador.listar();
+			}
+		});
+		button3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DAOPessoasAgent dao = (DAOPessoasAgent) controlador.crud;
+				dao.editando = !dao.editando;
+				button3.setText("Editando: " + dao.editando);
 			}
 		});
 		

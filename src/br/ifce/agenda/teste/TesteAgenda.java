@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.ifce.agenda.DAOPessoas;
+import br.ifce.agenda.DAOPessoasAgent;
 import br.ifce.agenda.DAOPessoasBD;
 import br.ifce.agenda.DAOPessoasBDRenato;
 import br.ifce.agenda.DAOPessoasList;
@@ -27,8 +28,9 @@ public class TesteAgenda {
 		 * Escolha o seu DAO e comente os outros
 		 */
 		this.dao = new DAOPessoasBDRenato();
-		this.dao = new DAOPessoasBD();
-		this.dao = new DAOPessoasList();
+		//this.dao = new DAOPessoasBD();
+		//this.dao = new DAOPessoasList();
+		//this.dao = new DAOPessoasAgent();
 		
 		this.dao.criarBD();
 	}

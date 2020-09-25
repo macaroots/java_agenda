@@ -1,11 +1,8 @@
 package br.ifce.agenda.controlador;
 
 import br.ifce.agenda.DAOPessoas;
-import br.ifce.agenda.DAOPessoasBD;
-import br.ifce.agenda.DAOPessoasBDRenato;
-import br.ifce.agenda.DAOPessoasList;
+import br.ifce.agenda.DAOPessoasAgent;
 import br.ifce.agenda.Pessoa;
-import br.ifce.agenda.visao.gui.MenuGUI;
 import br.ifce.agenda.visao.texto.FormEditaTexto;
 import br.ifce.agenda.visao.texto.FormTexto;
 import br.ifce.agenda.visao.texto.ListaTexto;
@@ -20,9 +17,10 @@ public class Agenda {
 		/**
 		 *  Escolha o crud
 		 */
-		this.crud = new DAOPessoasBDRenato();
-		this.crud = new DAOPessoasBD();
-		this.crud = new DAOPessoasList();
+		//this.crud = new DAOPessoasBDRenato();
+		//this.crud = new DAOPessoasBD();
+		//this.crud = new DAOPessoasList();
+		this.crud = new DAOPessoasAgent();
 		
 		/**
 		 * Escolha a visualização do menu
@@ -55,12 +53,14 @@ public class Agenda {
 	}
 
 	public void form(int id) {
-		this.formEditaView.attributes.put("pessoa", crud.ver(id));
+		Pessoa pessoa = crud.ver(id);
+		this.formEditaView.attributes.put("pessoa", pessoa);
 		formEditaView.render();
 	}
 
 	public void inserir(Pessoa pessoa) {
-		this.crud.inserir(pessoa);
+		int id = this.crud.inserir(pessoa);
+		System.out.println("inserido: " + id);
 		this.listar();
 	}
 	
