@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import br.ifce.brain.Brain;
+import br.ifce.brain.MySQLBrain;
 import br.ifce.mind.Agent;
 import br.ifce.mind.Ceed;
 import br.ifce.mind.action.AbstractAction;
@@ -14,15 +16,15 @@ public class DAOPessoasAgent implements DAOPessoas {
 	public boolean editando = false;
 	
 	public DAOPessoasAgent() {
-		/*Ceed.getAgent("DAOPessoas", new AbstractAction() {
-			public void act(Object target, Object callback) {
-				agent = (Agent) target;
-			}
-		});*/
 		Ceed.getAgent("DAOPessoas", new AbstractAction() {
 			@Override
 			public void act(Object target, Object callback) {
 				agent = (Agent) target;
+				Brain brain = new MySQLBrain("localhost", "mind", "root", "");
+				agent.see("addLibrary", brain);
+				agent.see("set", new Object[] {"rootPath", "C:\\Projetos\\Cadastro\\"});
+				agent.see("set", new Object[] {"classpath", "C:\\Projetos\\Cadastro\\*;C:\\Projetos\\Cadastro\\mind.jar;C:\\Projetos\\Cadastro\\mysql-connector-java-5.1.30-bin.jar;C:\\Projetos\\Cadastro\\tools.jar;C:\\Projetos\\Cadastro\\org.json.jar;C:\\Projetos\\Cadastro\\bin;C:\\eclipse\\plugins\\org.junit_4.12.0.v201504281640\\junit.jar;C:\\eclipse\\plugins\\org.hamcrest.core_1.3.0.v201303031735.jar;C:\\CEED\\mind_v2 - Ceed.jar;C:\\Users\\Renato\\Desktop\\CE\\lib\\mysql-connector-java-5.1.42-bin.jar;C:\\Users\\Renato\\Desktop\\CE\\lib\\org.json.jar;C:\\Users\\Renato\\Desktop\\CE\\lib\\tomcat-jdbc.jar;C:\\Users\\Renato\\Desktop\\CE\\lib\\tomcat-juli.jar;C:\\Users\\Renato\\Desktop\\CE\\lib\\tools.jar]: "});
+				agent.see("set", new Object[] {"binPath", "C:\\Projetos\\Cadastro\\"});
 			}
 		});
 	}
