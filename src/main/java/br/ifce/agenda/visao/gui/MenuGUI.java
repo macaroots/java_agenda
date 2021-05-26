@@ -15,7 +15,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import br.ifce.agenda.DAOPessoasAgent;
 import br.ifce.agenda.Pessoa;
 import br.ifce.agenda.controlador.Agenda;
 import br.ifce.mvc.Visao;
@@ -34,7 +33,7 @@ public class MenuGUI extends Visao<Agenda> {
 		JLabel label1, label2;
 		label1 = new JLabel("Name: ");
 		label2 = new JLabel("Phone: ");
-		JTextField txName, txPhone;
+		final JTextField txName, txPhone;
 		txName = new JTextField(20);
 		txName.setName("nome");
 		txPhone = new JTextField(20);
@@ -66,13 +65,6 @@ public class MenuGUI extends Visao<Agenda> {
 		pForm.add(button1);
 		pForm.add(button2);
 		System.out.println("controlador: " + controlador.crud);
-		if (controlador.crud instanceof DAOPessoasAgent) {
-			pForm.add(button3);
-			System.out.println("sim");
-		}
-		else {
-			System.out.println("não");
-		}
 		frame.add(scroll, BorderLayout.CENTER);
 
 		frame.setVisible(true);
@@ -96,13 +88,6 @@ public class MenuGUI extends Visao<Agenda> {
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlador.listar();
-			}
-		});
-		button3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DAOPessoasAgent dao = (DAOPessoasAgent) controlador.crud;
-				dao.editando = !dao.editando;
-				button3.setText("Editando: " + dao.editando);
 			}
 		});
 		

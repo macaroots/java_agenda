@@ -1,0 +1,16 @@
+./src/br/ifce/agenda/DAOPessoasBD.java
+./src/br/ifce/agenda/DAOPessoas.java
+./src/br/ifce/agenda/teste/TesteAgenda.java
+./src/br/ifce/agenda/controlador/Agenda.java
+./src/br/ifce/agenda/Pessoa.java
+./src/br/ifce/agenda/DAOPessoasBDRenato.java
+./src/br/ifce/agenda/DAOPessoasAgent.java
+./src/br/ifce/agenda/DAOPessoasList.java
+./src/br/ifce/agenda/visao/texto/ListaTexto.java
+./src/br/ifce/agenda/visao/texto/FormEditaTexto.java
+./src/br/ifce/agenda/visao/texto/FormTexto.java
+./src/br/ifce/agenda/visao/texto/MenuTexto.java
+./src/br/ifce/agenda/visao/gui/MenuGUI.java
+./src/br/ifce/agenda/visao/gui/ListaGUI.java
+./src/br/ifce/mvc/DAO.java
+./src/br/ifce/mvc/Visao.java

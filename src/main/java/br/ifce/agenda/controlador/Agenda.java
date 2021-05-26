@@ -1,12 +1,14 @@
 package br.ifce.agenda.controlador;
 
 import br.ifce.agenda.DAOPessoas;
-import br.ifce.agenda.DAOPessoasAgent;
+import br.ifce.agenda.DAOPessoasList;
 import br.ifce.agenda.Pessoa;
 import br.ifce.agenda.visao.texto.FormEditaTexto;
 import br.ifce.agenda.visao.texto.FormTexto;
 import br.ifce.agenda.visao.texto.ListaTexto;
 import br.ifce.agenda.visao.texto.MenuTexto;
+import br.ifce.agenda.visao.gui.ListaGUI;
+import br.ifce.agenda.visao.gui.MenuGUI;
 import br.ifce.mvc.Visao;
 
 public class Agenda {
@@ -17,15 +19,12 @@ public class Agenda {
 		/**
 		 *  Escolha o crud
 		 */
-		//this.crud = new DAOPessoasBDRenato();
-		//this.crud = new DAOPessoasBD();
-		//this.crud = new DAOPessoasList();
-		this.crud = new DAOPessoasAgent();
+		this.crud = new DAOPessoasList();
 		
 		/**
 		 * Escolha a visualização do menu
 		 */
-		/*/
+		/**/
 		this.menuView = new MenuGUI(this);
 		/*/
 		this.menuView = new MenuTexto(this);
@@ -34,7 +33,7 @@ public class Agenda {
 		/**
 		 *  Escolha a visualização da lista (null para GUI)
 		 */
-		/*/
+		/**/
 		this.listaView = null;
 		/*/
 		this.listaView = new ListaTexto(this);

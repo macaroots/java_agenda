@@ -1,7 +1,6 @@
 package br.ifce.agenda.visao.texto;
 import java.util.Scanner;
 
-import br.ifce.agenda.DAOPessoasAgent;
 import br.ifce.agenda.controlador.Agenda;
 import br.ifce.mvc.Visao;
 
@@ -17,11 +16,6 @@ public class MenuTexto extends Visao<Agenda> {
 		while (true) {
 			System.out.println("1. Cadastrar\n2. Listar\n3. Editar\n4. Apagar\n5. Sair");
 
-			DAOPessoasAgent dao = null;
-			if (controlador.crud instanceof DAOPessoasAgent) {
-				dao = (DAOPessoasAgent) controlador.crud;
-				System.out.println("6. Alterar modo. Editando: " + dao.editando);
-			}
 			Scanner sc = new Scanner(System.in);
 			int opcao = new Integer(sc.next());
 			switch (opcao) {
@@ -46,9 +40,6 @@ public class MenuTexto extends Visao<Agenda> {
 			case 5:
 				sc.close();
 				controlador.sair();
-				break;
-			case 6:
-				dao.editando = !dao.editando;
 				break;
 			default:
 				System.out.println("Opção inválida!");
