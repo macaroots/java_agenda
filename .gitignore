@@ -4,3 +4,6 @@
 
 *.class
 target/
+
+dependency-reduced-pom.xml
+live/
